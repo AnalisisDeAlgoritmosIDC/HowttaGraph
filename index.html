@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<script src="splash.js"></script>
+<link rel="icon" href="logo-claro.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HowttaGraph</title>
+<meta name="description" content="HowttaGraph, del equipo LEARN&TUDY: aprende cómo funcionan BFS, DFS, Dijkstra y A* viéndolos trabajar paso a paso.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Source+Sans+3:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/portada.css">
+</head>
+<body>
+<div class="wrap">
+  <nav class="topbar" aria-label="Navegación">
+    <a class="brand" href="index.html"><img class="brand-logo" src="logo-claro.svg" alt="" aria-hidden="true"><span>Howtta<b>Graph</b></span></a>
+    <div class="topnav">
+      <a href="aprender.html">Aprender</a>
+      <a href="#algoritmos">Algoritmos</a>
+      <a href="#como">Cómo se usa</a>
+      <a href="#equipo">Equipo</a>
+      <a href="grafos.html">Visualizador →</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-text">
+      <span class="eyebrow">Equipo LEARN&amp;TUDY presenta</span>
+      <h1 class="logo">Howtta<span>Graph</span></h1>
+      <p class="tagline">Aprende cómo piensan los algoritmos que encuentran rutas, viéndolos trabajar paso a paso.</p>
+      <p class="lede">Una herramienta educativa para estudiantes: BFS, DFS, Dijkstra y A* corriendo sobre un mapa, con su código en Python explicado línea por línea.</p>
+      <div class="cta">
+        <a class="btn-cta" href="aprender.html">Empezar a aprender <span aria-hidden="true">→</span></a>
+        <a class="btn-ghost" href="grafos.html">Ir al visualizador</a>
+      </div>
+    </div>
+    <figure class="hero-fig">
+      <canvas id="demo" width="560" height="420" aria-label="Animación: una búsqueda se expande por el grafo y encuentra el camino"></canvas>
+      <figcaption><span class="dot d-front"></span>frontera <span class="dot d-closed"></span>explorado <span class="dot d-path"></span>camino</figcaption>
+    </figure>
+  </header>
+
+  <section class="block" id="algoritmos">
+    <div class="sec-head">
+      <span class="eyebrow">Lo que vas a estudiar</span>
+      <h2>Cuatro formas de buscar un camino</h2>
+    </div>
+    <div class="algo-grid">
+      <a class="algo-card" href="grafos.html#bfs">
+        <span class="ds">Cola · FIFO</span>
+        <h3>BFS</h3>
+        <p>Explora por capas, como una onda en el agua. Encuentra el camino con menos pasos.</p>
+        <span class="go">Verlo en acción →</span>
+      </a>
+      <a class="algo-card" href="grafos.html#dfs">
+        <span class="ds">Pila · LIFO</span>
+        <h3>DFS</h3>
+        <p>Se mete hasta el fondo de una rama antes de regresar. Encuentra un camino, no siempre el mejor.</p>
+        <span class="go">Verlo en acción →</span>
+      </a>
+      <a class="algo-card" href="grafos.html#dijkstra">
+        <span class="ds">Cola de prioridad · dist</span>
+        <h3>Dijkstra</h3>
+        <p>Siempre avanza por el nodo más cercano al origen. Garantiza la ruta más barata.</p>
+        <span class="go">Verlo en acción →</span>
+      </a>
+      <a class="algo-card" href="grafos.html#astar">
+        <span class="ds">Cola de prioridad · f = g + h</span>
+        <h3>A*</h3>
+        <p>Dijkstra con brújula: estima lo que falta y apunta hacia la meta. Explora menos.</p>
+        <span class="go">Verlo en acción →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="block" id="ruta">
+    <div class="sec-head">
+      <span class="eyebrow">Ruta de aprendizaje</span>
+      <h2>Aprende por niveles, de lo más fácil a lo más difícil</h2>
+    </div>
+    <ol class="ruta-mini">
+      <li><span class="eyebrow">Nivel 1</span><b>Fundamentos</b><span>Qué es un grafo, tipos y cómo se guarda</span></li>
+      <li><span class="eyebrow">Nivel 2</span><b>Recorridos</b><span>Cola, pila, BFS y DFS</span></li>
+      <li><span class="eyebrow">Nivel 3</span><b>Caminos con peso</b><span>Heap y Dijkstra</span></li>
+      <li><span class="eyebrow">Nivel 4</span><b>Búsqueda informada</b><span>Heurísticas y A*</span></li>
+    </ol>
+    <p class="intro-ruta">12 clases con explicaciones, dibujos y código. Cada clase termina con preguntas: si las apruebas, desbloqueas la siguiente y ganas XP y estrellas. Al final, un reto con preguntas de todo el curso y tu reconocimiento de Aprendizaje básico de grafos. Después se desbloquean actividades prácticas con grafos que se generan al azar.</p>
+    <div><a class="btn-cta" href="aprender.html">Ver la ruta completa <span aria-hidden="true">→</span></a></div>
+  </section>
+
+  <section class="block" id="como">
+    <div class="sec-head">
+      <span class="eyebrow">Cómo se usa</span>
+      <h2>Estudia, contesta, practica</h2>
+    </div>
+    <ol class="steps">
+      <li><b>Estudia la clase.</b><span>Sigue la ruta nivel por nivel: explicación, dibujos, código y repaso rápido.</span></li>
+      <li><b>Contesta las preguntas.</b><span>Aprueba para desbloquear la siguiente clase. Si fallas, ves la explicación de cada respuesta.</span></li>
+      <li><b>Practica en el visualizador.</b><span>Mira el algoritmo trabajar paso a paso sobre un mapa y compara los cuatro en el mismo grafo.</span></li>
+    </ol>
+  </section>
+
+  <section class="block" id="equipo">
+    <div class="sec-head">
+      <span class="eyebrow">Quiénes lo hicimos</span>
+      <h2>Equipo LEARN&amp;TUDY</h2>
+    </div>
+    <!-- Edita los integrantes en js/portada.js (arreglo INTEGRANTES) -->
+    <ul class="team" id="team"></ul>
+  </section>
+
+  <section class="final">
+    <h2>Empieza por la clase 1: ¿qué es un grafo?</h2>
+    <a class="btn-cta" href="aprender.html#clase-1">Empezar a aprender <span aria-hidden="true">→</span></a>
+  </section>
+
+  <footer class="foot">HowttaGraph · equipo LEARN&amp;TUDY · Universidad de Guadalajara, CUCEI · 2026</footer>
+</div>
+<script src="js/portada.js"></script>
+</body>
+</html>
