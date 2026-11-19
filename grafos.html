@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<script src="splash.js"></script>
+<link rel="icon" href="logo-claro.svg" type="image/svg+xml">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Visualizador · HowttaGraph</title>
+<meta name="description" content="Visualiza paso a paso BFS, DFS, Dijkstra y A* con su código en Python explicado línea por línea.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Source+Sans+3:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/grafos.css">
+</head>
+<body>
+<div class="app">
+  <!-- barra superior -->
+  <header class="appbar">
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menú" aria-controls="sidebar" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    <a class="brand" href="index.html"><img class="brand-logo" src="logo-claro.svg" alt="" aria-hidden="true"><span>Howtta<b>Graph</b></span></a>
+    <a class="quick" id="quick" href="aprender.html#ruta"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg><span>Continuar aprendiendo</span></a>
+    <div class="appbar-right">
+      <span class="hud-pill xp" title="Experiencia"><i><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z" fill="currentColor"/></svg></i><span id="shXp">0 XP</span></span>
+      <span class="hud-pill st" title="Estrellas"><i><svg viewBox="0 0 24 24"><path d="M12 3.2l2.7 5.6 6.1.8-4.5 4.2 1.1 6.1L12 17l-5.4 2.9 1.1-6.1-4.5-4.2 6.1-.8z" fill="currentColor"/></svg></i><span id="shStars">0</span></span>
+      <a class="user" href="aprender.html#perfil" title="Mi perfil"><span class="user-name">Hola, <b id="shName">estudiante</b></span><span class="avatar" id="shAvatar" aria-hidden="true">HG</span></a>
+    </div>
+  </header>
+
+  <!-- menú lateral -->
+  <nav class="sidebar" id="sidebar" aria-label="Menú principal">
+    <a class="nav-item" href="aprender.html#ruta" data-nav="ruta"><svg viewBox="0 0 24 24"><path d="M4 13a8 8 0 1 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 13l4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Escritorio</a>
+    <a class="nav-item" href="aprender.html#clases" data-nav="clases"><svg viewBox="0 0 24 24"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5zM13 4h5.5A1.5 1.5 0 0 1 20 5.5v13a1.5 1.5 0 0 1-1.5 1.5H13z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Clases<span class="count" id="shCount">0/12</span></a>
+    <div class="nav-sub">
+      <a href="aprender.html#nivel-1" data-nav="nivel-1"><i style="background:var(--lv1)"></i>Fundamentos</a>
+      <a href="aprender.html#nivel-2" data-nav="nivel-2"><i style="background:var(--lv2)"></i>Recorridos</a>
+      <a href="aprender.html#nivel-3" data-nav="nivel-3"><i style="background:var(--lv3)"></i>Caminos con peso</a>
+      <a href="aprender.html#nivel-4" data-nav="nivel-4"><i style="background:var(--lv4)"></i>Búsqueda informada</a>
+    </div>
+    <a class="nav-item" href="aprender.html#reto" data-nav="reto"><svg viewBox="0 0 24 24"><path d="M5 21V4M5 4h11l-2 4 2 4H5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Reto final</a>
+    <a class="nav-item" href="aprender.html#reconocimiento" data-nav="reconocimiento"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.8 13.5L7.5 21l4.5-2.3 4.5 2.3-1.3-7.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Reconocimiento</a>
+    <a class="nav-item" href="aprender.html#actividades" data-nav="actividades"><svg viewBox="0 0 24 24"><path d="M10 4h4v3a2 2 0 1 0 4 0V4h2v6h-3a2 2 0 1 0 0 4h3v6h-6v-3a2 2 0 1 0-4 0v3H4v-6h3a2 2 0 1 0 0-4H4V4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Actividades</a>
+    <span class="nav-label">Herramientas</span>
+    <a class="nav-item" href="grafos.html" data-nav="visualizador"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="18" cy="8" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="9" cy="18" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.4 6.4l7.2 1.2M7 8.3l1.4 7.3M16.4 10l-5.6 6.2" stroke="currentColor" stroke-width="1.6"/></svg>Visualizador</a>
+    <a class="nav-item" href="index.html"><svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Portada</a>
+    <div class="side-progress"><span>Tu avance · <b id="shPct">0%</b></span><span class="bar"><i id="shBar" style="width:0%"></i></span></div>
+  </nav>
+  <div class="backdrop" id="backdrop"></div>
+
+  <main class="workspace">
+    <div class="subbar"><nav class="crumbs" aria-label="Ubicación"><span>Herramientas</span><span>›</span><b>Visualizador</b></nav></div>
+<div class="wrap">
+
+  <header class="top">
+    <span class="eyebrow">Visualizador · búsqueda en grafos</span>
+    <h1>Rutas <span>Paso a Paso</span></h1>
+    <p class="lede">Elige un algoritmo y míralo trabajar sobre un mapa de 15 cruces. Cada paso resalta la línea de código que se está ejecutando, explica qué hace y muestra cómo cambian la cola, las distancias y los padres de cada nodo.</p>
+  </header>
+
+  <nav class="algos" id="algos" aria-label="Algoritmo"></nav>
+
+  <div class="lab">
+    <div class="card">
+      <div class="card-h">
+        <div>
+          <span class="eyebrow" id="algoEyebrow">Lienzo</span>
+          <h3 id="algoTitle">Grafo</h3>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+          <span class="hint">Clic en un nodo fija:</span>
+          <div class="seg" role="group" aria-label="Qué fija el clic">
+            <button id="modeStart" aria-pressed="true">Origen</button>
+            <button id="modeGoal" aria-pressed="false">Destino</button>
+          </div>
+          <button class="btn" id="newGraph" title="Genera otro mapa con pesos distintos">Nuevo grafo</button>
+        </div>
+      </div>
+      <svg id="graph" viewBox="0 0 820 500" role="img" aria-label="Grafo con 15 nodos y aristas con peso"></svg>
+      <div class="legend">
+        <span><i style="background:var(--st-idle)"></i>Sin descubrir</span>
+        <span><i style="background:var(--st-front)"></i>En la frontera</span>
+        <span><i style="background:var(--st-cur)"></i>Nodo actual</span>
+        <span><i style="background:var(--st-closed)"></i>Explorado</span>
+        <span><i style="background:var(--st-path)"></i>Camino final</span>
+        <span><i style="background:transparent;border:3px solid var(--accent)"></i>Origen</span>
+        <span><i style="background:transparent;border:3px dashed var(--goal)"></i>Destino</span>
+      </div>
+      <div class="controls">
+        <button class="btn" id="bReset" title="Volver al inicio (Inicio)">⏮</button>
+        <button class="btn" id="bPrev" title="Paso anterior (←)">◀ Paso</button>
+        <button class="btn primary" id="bPlay" title="Reproducir / pausar (espacio)">▶ Reproducir</button>
+        <button class="btn" id="bNext" title="Paso siguiente (→)">Paso ▶</button>
+        <button class="btn" id="bEnd" title="Ir al final (Fin)">⏭</button>
+        <label class="speed" for="speed">Velocidad <input type="range" id="speed" min="1" max="10" value="5"></label>
+        <div class="prog"><input type="range" id="scrub" min="0" max="0" value="0" aria-label="Línea de tiempo de pasos"><span id="stepNo">0 / 0</span></div>
+      </div>
+      <div class="narr" aria-live="polite">
+        <span class="eyebrow">Qué está pasando</span>
+        <p class="msg" id="msg"></p>
+        <div class="stats" id="stats"></div>
+      </div>
+    </div>
+
+    <div class="code">
+      <div class="card-h">
+        <div>
+          <span class="eyebrow">Código en Python</span>
+          <h3 id="codeTitle">bfs()</h3>
+        </div>
+        <span class="eyebrow">clic en una línea = explicación</span>
+      </div>
+      <pre id="code"></pre>
+      <div class="explain">
+        <span class="eyebrow" id="explHead">Línea</span>
+        <p id="expl"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="structs">
+    <div class="card">
+      <div class="card-h"><div><span class="eyebrow">Estructura de datos</span><h3 id="dsTitle">Cola (FIFO)</h3></div></div>
+      <div class="ds-body">
+        <div class="chips" id="chips"></div>
+        <p class="ds-note" id="dsNote"></p>
+      </div>
+      <div class="card-h" style="border-top:1px solid var(--rule)"><div><span class="eyebrow">Bitácora</span><h3>Historial de pasos</h3></div></div>
+      <ol class="log" id="log"></ol>
+    </div>
+    <div class="card">
+      <div class="card-h"><div><span class="eyebrow">Memoria del algoritmo</span><h3>Tabla de nodos</h3></div><span class="hint">La fila naranja cambió en este paso</span></div>
+      <div class="tbl-wrap"><table id="tbl"></table></div>
+    </div>
+  </div>
+
+  <section class="block" id="comparar">
+    <div><span class="eyebrow">Mismo mapa, mismo origen y destino</span><h2>Comparativa de los cuatro</h2></div>
+    <p class="intro">Corremos los cuatro algoritmos sobre el grafo actual. Fíjate en cuántos nodos tuvo que explorar cada uno y si el camino que encontró es el más barato. Cambia el origen, el destino o genera otro grafo y la tabla se recalcula.</p>
+    <div class="card cmp-grid" id="cmp"></div>
+  </section>
+
+  <section class="block" id="teoria">
+    <div><span class="eyebrow">Para estudiar</span><h2>Cómo piensa cada algoritmo</h2></div>
+    <div class="theory" id="theory"></div>
+  </section>
+
+  <section class="block" id="glosario">
+    <div><span class="eyebrow">Vocabulario</span><h2>Conceptos clave</h2></div>
+    <div class="gloss">
+      <div><b>Grafo</b><span>Conjunto de nodos (vértices) unidos por aristas. Un mapa de calles es un grafo: los cruces son nodos y las calles son aristas.</span></div>
+      <div><b>Peso</b><span>Costo de recorrer una arista: distancia, tiempo o dinero. Aquí es el número en la etiqueta de cada calle.</span></div>
+      <div><b>Frontera</b><span>Nodos ya descubiertos que todavía no se exploran. Vive en la cola, pila o cola de prioridad.</span></div>
+      <div><b>Padre</b><span>Desde qué nodo llegamos a otro. Siguiendo los padres hacia atrás desde el destino se reconstruye el camino.</span></div>
+      <div><b>Relajar una arista</b><span>Preguntar si pasar por el nodo actual mejora la distancia conocida al vecino; si sí, se actualiza.</span></div>
+      <div><b>Heurística h(n)</b><span>Estimación de cuánto falta para llegar a la meta. A* usa la distancia en línea recta, que nunca sobreestima.</span></div>
+      <div><b>Admisible</b><span>Una heurística que nunca dice que falta más de lo que realmente falta. Con ella, A* garantiza encontrar el camino óptimo.</span></div>
+      <div><b>Óptimo</b><span>El camino de menor costo total posible entre origen y destino.</span></div>
+    </div>
+  </section>
+
+  <footer>HowttaGraph · equipo LEARN&amp;TUDY. Atajos: <kbd>←</kbd> <kbd>→</kbd> paso a paso · <kbd>espacio</kbd> reproducir/pausar · <kbd>Inicio</kbd> <kbd>Fin</kbd>. Los pesos son proporcionales a la distancia en el dibujo (más un extra en algunas calles, como si hubiera tráfico).</footer>
+</div>
+
+</main>
+</div>
+
+<!-- El orden importa: grafo.js define el grafo, algoritmos.js los usa, visualizador.js dibuja todo -->
+<script src="js/shell.js"></script>
+<script>HG_SHELL.marcarActivo("visualizador");</script>
+<script src="js/grafo.js"></script>
+<script src="js/algoritmos.js"></script>
+<script src="js/visualizador.js"></script>
+</body>
+</html>
