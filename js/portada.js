@@ -5,9 +5,9 @@
 
 /* ---------- integrantes (edita aquí) ---------- */
 const INTEGRANTES = [
-  { nombre: "Carlos Adrian Ramirez Gutiérrez", rol: "Visualizador y motor de la ruta de aprendizaje" },
-  { nombre: "Isaac Saldivar Zaldivar", rol: "Algoritmos y contenido de las clases" },
-  { nombre: "Daniel Padilla Echeverria", rol: "Portada, diseño de la ruta y documentación" },
+  { nombre: "Carlos Adrian Ramirez Gutiérrez", rol: "Visualizador y estructura del proyecto" },
+  { nombre: "Isaac Saldivar Zaldivar", rol: "Algoritmos y estilos del visualizador" },
+  { nombre: "Daniel Padilla Echeverria", rol: "Portada y documentación" },
 ];
 
 const team = document.getElementById("team");
@@ -71,7 +71,7 @@ function draw(k, pathK) {
     ctx.strokeStyle = c.ink; ctx.lineWidth = 2;
     ctx.beginPath(); ctx.arc(x, y, 20, 0, 7); ctx.fill(); ctx.stroke();
     ctx.fillStyle = (est[i] === "idle" || est[i] === "front") && !enCamino.has(i) ? c.ink : "#FFFFFF";
-    ctx.font = "600 16px 'Source Sans 3', system-ui, sans-serif";
+    ctx.font = "700 16px 'Bricolage Grotesque', system-ui, sans-serif";
     ctx.textAlign = "center"; ctx.textBaseline = "middle";
     ctx.fillText("ABCDEFGHIJKL"[i], x, y + 1);
   });

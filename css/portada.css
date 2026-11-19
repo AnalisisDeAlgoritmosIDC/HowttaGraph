@@ -3,7 +3,7 @@
 .hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:32px;align-items:center;padding-block:12px 24px}
 @media (max-width:900px){.hero{grid-template-columns:minmax(0,1fr)}}
 .hero-text{display:grid;gap:16px;min-width:0}
-.logo{font-size:clamp(3rem,8vw,5.8rem);font-weight:500;letter-spacing:-.03em;line-height:1}
+.logo{font-size:clamp(3rem,8.5vw,6.4rem);font-weight:800;letter-spacing:-.045em;line-height:.92}
 .logo span{color:var(--accent);position:relative}
 .logo span::after{content:"";position:absolute;left:.04em;right:.06em;bottom:-.08em;height:.09em;border-radius:99px;
   background:repeating-linear-gradient(90deg,var(--st-path) 0 .5em,transparent .5em .7em)}
@@ -29,7 +29,7 @@
 @media (max-width:560px){.algo-grid{grid-template-columns:minmax(0,1fr)}}
 .algo-card{display:grid;gap:10px;align-content:start;padding:20px;background:var(--panel);border:1px solid var(--rule);border-radius:12px;color:var(--ink);text-decoration:none;transition:border-color .15s,transform .15s}
 .algo-card:hover{border-color:var(--accent);transform:translateY(-3px)}
-.algo-card h3{font-size:1.8rem;font-weight:500;letter-spacing:-.01em}
+.algo-card h3{font-size:1.9rem;font-weight:800;letter-spacing:-.02em}
 .algo-card .ds{font:600 .74rem var(--f-mono);color:var(--muted);letter-spacing:.04em}
 .algo-card p{color:var(--muted);font-size:.95rem}
 .algo-card .go{font-weight:700;color:var(--accent);font-size:.92rem;margin-top:4px}
@@ -43,21 +43,12 @@
 
 .team{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
 .team li{display:flex;gap:14px;align-items:center;padding:16px;background:var(--panel);border:1px solid var(--rule);border-radius:12px;min-width:0}
-.team .av{flex:none;width:48px;height:48px;border-radius:50%;border:2.5px solid var(--ink);display:grid;place-items:center;font:600 1.05rem var(--f-body);color:#FFFFFF}
+.team .av{flex:none;width:48px;height:48px;border-radius:50%;border:2.5px solid var(--ink);display:grid;place-items:center;font:800 1.1rem var(--f-display);color:#FFFFFF}
 .team .who{display:grid;min-width:0}
 .team .who b{font-family:var(--f-display);font-size:1.05rem;line-height:1.2}
 .team .who span{color:var(--muted);font-size:.88rem}
 
 .final{margin-top:72px;padding:36px 28px;border-radius:16px;background:var(--ink);color:var(--paper);display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center}
 .final h2{color:var(--paper)}
-.ruta-mini{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;position:relative}
-.ruta-mini li{display:grid;gap:4px;padding:18px 16px 0 0;position:relative}
-.ruta-mini li::before{content:"";width:22px;height:22px;border-radius:50%;border:2.5px solid var(--ink);background:var(--st-front);position:relative;z-index:1;margin-bottom:6px}
-.ruta-mini li:nth-child(2)::before{background:var(--st-closed)} .ruta-mini li:nth-child(3)::before{background:var(--st-cur)} .ruta-mini li:nth-child(4)::before{background:var(--st-path)}
-.ruta-mini::after{content:"";position:absolute;left:11px;right:10%;top:29px;height:3px;background:var(--edge)}
-.ruta-mini b{font-family:var(--f-display);font-size:1.2rem}
-.ruta-mini span:last-child{color:var(--muted);font-size:.92rem}
-@media (max-width:760px){.ruta-mini{grid-template-columns:minmax(0,1fr) minmax(0,1fr);row-gap:18px}.ruta-mini::after{display:none}}
-.intro-ruta{color:var(--muted);max-width:66ch}
 .foot{margin-top:40px;font-size:.85rem;color:var(--muted)}
 @media (prefers-reduced-motion:reduce){.btn-cta,.algo-card{transition:none}}
